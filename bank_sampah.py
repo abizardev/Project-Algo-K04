@@ -173,7 +173,7 @@ def muat_tukar():
         data_tukar.to_csv("penukaran.csv", index=False)
     return data_tukar
 
-
+# Tugas: Abizar (Format tampilan cetak tabel setoran)
 def tampilkan_tabel(kolom, baris_data):
     lebar_kolom = []
     for i in range(len(kolom)):
@@ -633,14 +633,18 @@ def tukar_poin(data, data_tukar, sembako):
         print("Poin nasabah sudah habis.")
         return
 
-    print("Nama nasabah :", nama_baku)
-    print("Total poin    :", total_poin)
-    print("Sudah ditukar :", total_tukar, "poin")
-    print("Sisa poin     :", sisa, "poin")
+    tampilkan_tabel(
+        ["Keterangan", "Nilai"],
+        [
+            ["Nama nasabah", nama_baku],
+            ["Total poin", total_poin],
+            ["Sudah ditukar", str(total_tukar) + " poin"],
+            ["Sisa poin", str(sisa) + " poin"]
+        ]
+    )
 
     print("\nDaftar sembako:")
-    for i in range(len(sembako)):
-        print(f"{i + 1}. {sembako[i][0]} - {sembako[i][1]} poin (Stok: {sembako[i][2]})")
+    tampilkan_sembako(sembako)
 
     pilih_teks = input(f"Pilih sembako (1-{len(sembako)}): ").strip()
     if not pilih_teks.isdigit():
@@ -671,12 +675,17 @@ def tukar_poin(data, data_tukar, sembako):
     data_tukar.to_csv("penukaran.csv", index=False)
 
     print("\nBukti Penukaran:")
-    print("Nama nasabah :", nama_baku)
-    print("Sembako      :", barang)
-    print("Poin dipakai :", harga_poin)
-    print("Sisa poin    :", sisa - harga_poin)
+    tampilkan_tabel(
+        ["Keterangan", "Nilai"],
+        [
+            ["Nama nasabah", nama_baku],
+            ["Sembako", barang],
+            ["Poin dipakai", str(harga_poin) + " poin"],
+            ["Sisa poin", str(sisa - harga_poin) + " poin"]
+        ]
+    )
     print("Penukaran berhasil disimpan.")
-    
+
 
 # Tugas: Abizar (Pencarian riwayat pencairan uang dan penukaran sembako)
 def riwayat_transaksi(data, data_bayar, data_tukar):
