@@ -783,6 +783,7 @@ def tampilkan_sembako(sembako):
             str(sembako[i][2]) + " unit"
         ])
     tampilkan_tabel(["No", "Nama Sembako", "Harga Poin", "Stok"], baris_tabel)
+    
 
 # Tugas: Habibi (Manajemen stok gudang dan restok sembako oleh admin)
 def kelola_sembako(sembako, peran):
